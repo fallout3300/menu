@@ -40,13 +40,13 @@ main {
     gap: 1rem;
 }
 
-body {
+/* body {
     @media (max-width: 600px) {
         overflow: scroll;
         height: 200vh;
         width: 200vw;
     }
-}
+} */
 
 
 
@@ -566,5 +566,38 @@ details > .content {
         & > span {
             color: var(--text);
         }
+    }
+}
+
+@media (max-width: 426px) {
+    * {
+        box-sizing: border-box;
+    }
+    html, body {
+        overscroll-behavior-y: none;
+
+    }
+    main, body, .container.right {
+        margin: 0;
+        padding: 0;
+        width: 300vw;
+        height: 100vh;
+    }
+    body {
+        overflow: scroll;
+    }
+    main {
+        display: flex;
+    }
+    table {
+        width: 100%;
+    }
+    .container.left {
+        display: none;
+    }
+    .container.right {
+        height: max-content;
+        width: max-content;
+        overflow: hidden;
     }
 }
