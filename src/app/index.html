@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.css">
+    <link rel="stylesheet" href="../src/style.css"> -->
+    <!-- <script 
+        src="https://code.jquery.com/jquery-3.7.1.min.js" 
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" 
+        crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.contextMenu.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.7.1/jquery.ui.position.js"></script>
+
+    <script src="../src/git.js" defer></script>
+    
+    <script src="../src/index.js" defer></script> -->
+</head>
+
+<body>
+    <main class="loader">
+        <div class="container left">
+            <nav>
+                <button style="--count: 0" class="select" for="inputs-container">I</button>
+                <button style="--count: 1" id="total-nav" for="total-container">T</button>
+                <div class="separator"></div>
+                <button style="--count: 2" id="save-btn">Save</button>
+                <button style="--count: 3" id="load-btn">Load</button>
+                <!-- <button style="--count: 4" id="button">Button</button> -->
+            </nav>
+            <form id="inputs-container" class="form">
+                <div class="inputs">
+                    <div class="lines one">
+                        <label for="days">Дни</label>
+                        <input id="days" type="number" min="1" required value="7" placeholder="Сколько длится поход?"
+                            name="days">
+                    </div>
+                    <div class="lines one">
+                        <label for="people">Люди</label>
+                        <input id="people" type="number" min="1" required value="9"
+                            placeholder="Сколько людей в походе?" name="people">
+                    </div>
+                    <!-- <div class="lines many">
+                        <label for="breakfasts">Завтраки</label>
+                        <input id="breakfasts" type="text" value="Греча" placeholder="Греча, Геркулес, Манка..."
+                            name="breakfasts" autocomplete="on">
+                    </div> -->
+                    <div class="lines many">
+                        <label for="breakfasts">Завтраки</label>
+                        <textarea id="breakfasts" type="text" value="Греча" placeholder="Греча, Геркулес, Манка..."
+                            name="breakfasts" autocomplete="on">
+                        </textarea>
+                    </div>
+                    <div class="lines many">
+                        <label for="snack1">Перекус 1</label>
+                        <textarea id="snack1" type="text" value="Греча" placeholder="Колбаса..." name="snack1"
+                            autocomplete="on">
+                        </textarea>
+                    </div>
+                    <div class="lines many">
+                        <label for="snack2">Перекус 2</label>
+                        <textarea id="snack2" type="text" value="Греча" placeholder="Конфеты..." name="snack2"
+                            autocomplete="on">
+                        </textarea>
+                    </div>
+                    <div class="lines many">
+                        <label for="dinners">Ужины</label>
+                        <textarea id="dinners" type="text" value="Греча" placeholder="Греча, Макароны, Греча..."
+                            name="dinners" autocomplete="on">
+                        </textarea>
+                    </div>
+                    <div class="lines many">
+                        <label for="kcalForOne">Ккал на порцию</label>
+                        <input id="kcalForOne" type="text" value="500, 500, 500, 500 > 500, 500, 500, 500"
+                            title="На завтрак, перекус, перекус, ужин > (под конец похода)На завтрак, перекус, перекус, ужин"
+                            placeholder="500, 350, 350, 600 > 700, 500, 500, 800" name="kcalForOne">
+                    </div>
+                    <div class="lines many">
+                        <label for="caloricity">Калорийность пищи</label>
+                        <textarea id="caloricity" type="text" value="Греча - 343;" placeholder="Греча - 343;" rows="14"
+                            name="caloricity"></textarea>
+                    </div>
+                </div>
+                <input type="submit" value="Готово" class="send">
+                <button class="send">Перерасчитать</button>
+            </form>
+
+            <div class="hide" id="total-container">
+                <div>
+                    <table id="total-table">
+                        <tr>
+                            <th>Название</th>
+                            <th>Вес</th>
+                        </tr>
+                    </table>
+                    <button class="send" id="plus-btn">+</button>
+                    <table id="total-table">
+                        <tr>
+                            <th>Итого</th>
+                            <td id="finaly">-</td>
+                        </tr>
+                    </table>
+                </div>
+                <button class="send" id="total-send">Пересчитать</button>
+            </div>
+
+        </div>
+        <div class="container right">
+            <table id="tab">
+                <colgroup>
+                    <col style="width: 4rem;">
+                    <col style="width: max(1fr, 80vw);">
+                    <col>
+                </colgroup>
+                <tr>
+                    <th>День</th>
+                    <th>Завтрак</th>
+                    <th>Перекус 1</th>
+                    <th>Перекус 2</th>
+                    <th>Ужин</th>
+                </tr>
+            </table>
+        </div>
+        <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="spinner-container">
+            <g class="spinner">
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" opacity=".14" />
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" transform="rotate(30 12 12)"
+                    opacity=".29" />
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" transform="rotate(60 12 12)"
+                    opacity=".43" />
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" transform="rotate(90 12 12)"
+                    opacity=".57" />
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" transform="rotate(120 12 12)"
+                    opacity=".71" />
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" transform="rotate(150 12 12)"
+                    opacity=".86" />
+                <rect fill="currentColor" x="11" y="1" width="2" height="5" transform="rotate(180 12 12)" />
+            </g>
+        </svg>
+        <dialog id="input-dialog">
+            <form action="#">
+
+                <div class="lines many">
+                    <label for="input">Введите новые Ккалории</label>
+
+                    <input id="input" type="text">
+                </div>
+
+                <div class="one-line">
+                    <button id="cancel-dialog" class="send cancel">Отмена</button>
+                    <button id="send-dialog" class="send" type="submit">Готово</button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="food-dialog">
+            <form action="#">
+
+                <div class="lines many">
+                    <label>Имя
+                        <input name="foodName" type="text">
+                    </label>
+                    <label>Соотношение (%)
+                        <input name="foodProportion" type="number" placeholder="По умолчанию 100">
+                    </label>
+                    <label>Масса (кг)
+                        <input name="foodMass" type="number" step="any" placeholder="Не обязательно">
+                    </label>
+                </div>
+
+                <div class="one-line">
+                    <button id="cancel-dialog" class="send cancel">Отмена</button>
+                    <button id="send-dialog" class="send" type="submit">Готово</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+
+    <!-- <div class="context-menu"> -->
+
+    </div>
+</body>
+
+</html>

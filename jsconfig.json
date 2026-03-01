@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "module": "ESNext",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "allowJs": true
+        // "checkJs": true
+    }
+}
+
+// {
+//     "compilerOptions": {
+//         "baseUrl": ".",
+//         "paths": {
+//             "@/*": ["src/*"]
+//         },
+//         "target": "ESNext",
+//         "module": "ESNext",
+//         "moduleResolution": "node",
+//         "jsx": "preserve", // Если используете React или Vue
+//         "checkJs": false // Поставьте true, если хотите строгую проверку ошибок
+//     },
+//     // "exclude": ["node_modules", "dist", "build"]
+//     "include": ["src/**/*"]
+// }
+
+// {
+//     "compilerOptions": {
+//         "allowSyntheticDefaultImports": true,
+//       "module": "ESNext",
+//       "target": "ESNext",
+//       "baseUrl": ".",
+//       "paths": {
+//         "@/*": ["src/*"]
+//       },
+//     //   "checkJs": true
+//     },
+//     "typeAcquisition": {
+//       "include": ["jquery"]
+//     },
+//     "exclude": ["node_modules"]
+//   }
+  
